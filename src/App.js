@@ -5,11 +5,14 @@ import { nanoid } from "nanoid";
 export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
   const [darkTheme, setDarkTheme] = React.useState(false);
+  const [playAudio, setPlayAudio] = React.useState(true);
+  const [showInfo, setShowInfo] = React.useState(false);
 
   function dieValueObject(){
     return {
       value: Math.floor((Math.random() * 6) + 1),
-      id: nanoid()
+      id: nanoid(),
+      isHeld: false
     }
   }
 
@@ -25,14 +28,31 @@ export default function App(){
     setDice(generateNewDice())
   }
 
+  function holdDice(id){
+    setDice(prevDice => prevDice.map(die=>{
+      return die.id===id? {
+        ...die,
+        isHeld: !die.isHeld
+      }:die
+    }))
+  }
+
   function toggleTheme(){
-    setDarkTheme(prevTheme => !prevTheme)
+    setDarkTheme(prevState => !prevState)
+  }
+  function toggleAudio(){
+    setPlayAudio(prevState => !prevState)
+  }
+  function toggleHelpMenu(){
+    setShowInfo(prevState => !prevState)
   }
 
   const dieElements = dice.map(die =>{
     return <Die key={die.id}
               value={die.value}
-              theme={darkTheme} />
+              theme={darkTheme}
+              isHeld={die.isHeld}
+              holdDice={()=> holdDice(die.id)} />
   })
 
   return(
@@ -53,7 +73,8 @@ export default function App(){
         </div>
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
         <div className="features">
-          <div>Sound: <span><i className="fa-solid fa-volume-xmark"></i><i className="fa-solid fa-volume-high"></i></span></div>
+          <div>Sound: <span onClick={toggleAudio}>{playAudio ? <i className="fa-solid fa-volume-high"></i> : <i className="fa-solid fa-volume-xmark"></i>}</span></div>
+          <span onClick={toggleHelpMenu}><i class="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls. Try to do it fast with lowest amount of rolls.</p></div>}
           <div>Theme: <span onClick={toggleTheme}>{darkTheme ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}</span></div>
         </div>
       </div>
