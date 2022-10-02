@@ -1,6 +1,6 @@
 export default function Die(props){
     return(
-        <div className="die">
+        <div className={props.theme ? "dark-mode die":"die"}>
             {props.value === 1 && <i className="fa-solid fa-dice-one"></i>}
             {props.value === 2 && <i className="fa-solid fa-dice-two"></i>}
             {props.value === 3 && <i className="fa-solid fa-dice-three"></i>}

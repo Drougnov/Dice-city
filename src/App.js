@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
-  cosnt [darkTheme, setDarkTheme] = React.useState(false);
+  const [darkTheme, setDarkTheme] = React.useState(false);
 
   function dieValueObject(){
     return {
@@ -25,31 +25,37 @@ export default function App(){
     setDice(generateNewDice())
   }
 
+  function toggleTheme(){
+    setDarkTheme(prevTheme => !prevTheme)
+  }
+
   const dieElements = dice.map(die =>{
     return <Die key={die.id}
-              value={die.value} />
+              value={die.value}
+              theme={darkTheme} />
   })
 
   return(
-    <div className='board'>
-      
-      <div className="counter">
-        <div className="counter__time">
-          <i className="fa-solid fa-stopwatch"></i>
-          <span>00:00:00</span>
+    <div className={darkTheme ? "dark-mode container":"container"}>
+      <div className={darkTheme ? "dark-mode board":"board"}>
+        <div className="counter">
+          <div className="counter__time">
+            <i className="fa-solid fa-stopwatch"></i>
+            <span>00:00:00</span>
+          </div>
+          <div className="counter__roll">
+            <i className="fa-solid fa-dice"></i>
+            <span>00</span>
+          </div>
         </div>
-        <div className="counter__roll">
-          <i className="fa-solid fa-dice"></i>
-          <span>00</span>
+        <div className="die-container">
+          {dieElements}
         </div>
-      </div>
-      <div className="die-container">
-        {dieElements}
-      </div>
-      <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
-      <div className="features">
-        <span>Sound: <i className="fa-solid fa-volume-xmark"></i><i className="fa-solid fa-volume-high"></i></span>
-        <span>Theme: <i className="fa-solid fa-moon"></i><i className="fa-solid fa-sun"></i></span>
+        <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
+        <div className="features">
+          <span>Sound: <i className="fa-solid fa-volume-xmark"></i><i className="fa-solid fa-volume-high"></i></span>
+          <div>Theme: <span onClick={toggleTheme}>{darkTheme ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}</span></div>
+        </div>
       </div>
     </div>
   )
