@@ -10,7 +10,7 @@ export default function App(){
   const [showInfo, setShowInfo] = React.useState(false);
 
   React.useEffect(()=>{
-    const allDiceHeld = dice.every(die=> !die.isHeld)
+    const allDiceHeld = dice.every(die=> die.isHeld)
     const firstDiceValue = dice[0].value;
     const allDiceMatched = dice.every(die => die.value===firstDiceValue);
 
@@ -40,9 +40,6 @@ export default function App(){
       setDice(prevDice => prevDice.map(die =>{
         return die.isHeld ? die : dieValueObject();
       }))
-    }else{
-      setDice(generateNewDice());
-      setVictory(false);
     }
   }
 
@@ -53,6 +50,11 @@ export default function App(){
         isHeld: !die.isHeld
       }:die
     }))
+  }
+
+  function startNewGame(){
+    setVictory(false);
+    setDice(generateNewDice())
   }
 
   function toggleTheme(){
@@ -92,9 +94,17 @@ export default function App(){
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
         <div className="features">
           <div>Sound: <span onClick={toggleAudio}>{playAudio ? <i className="fa-solid fa-volume-high"></i> : <i className="fa-solid fa-volume-xmark"></i>}</span></div>
-          <span onClick={toggleHelpMenu}><i class="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls.</p></div>}
+          <span onClick={toggleHelpMenu}><i className="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls.</p></div>}
           <div>Theme: <span onClick={toggleTheme}>{darkTheme ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}</span></div>
         </div>
+        {victory && 
+          <div className="score-board">
+            <h2>Congratulations!</h2>
+            <p>You scored: <span>0000</span></p>
+            <p>High Score: <span>0000</span></p>
+            <button onClick={startNewGame}>New Game</button>
+          </div>
+        }
       </div>
     </div>
   )

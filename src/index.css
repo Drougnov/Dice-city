@@ -44,6 +44,7 @@
               6px 6px 16px hsla(240, 30%, 86%, 1), 
               inset 6px 6px 16px hsla(240, 30%, 86%, 1), 
               inset -6px -6px 16px white;
+  position: relative;
 }
 .board.dark-mode{
   color: var(--oxford-blue);
@@ -129,8 +130,8 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 225px;
-  color: var(--die-clr);
-  background: var(--container-bg);
+  color: var(--dark-die-clr);
+  background: var(--dark-container-bg);
   font-size: 1rem;
   font-weight: 400;
   text-align: center;
@@ -153,11 +154,58 @@
   content: '';
   width: 20px;
   height: 20px;
-  background: var(--container-bg);
+  background: var(--dark-container-bg);
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   z-index: 1;
+}
+.board.dark-mode .help-menu{
+  color: var(--die-clr);
+  background: var(--container-bg);
+}
+.board.dark-mode .help-menu::after{
+  background: var(--container-bg);
+}
+.board .score-board{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 3.5rem);
+  color: var(--die-clr);
+  background: var(--container-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.board.dark-mode .score-board{
+  color: var(--dark-die-clr);
+  background: var(--dark-container-bg);
+}
+.score-board h2{
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.score-board p{
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}
+.score-board button{
+  color: var(--container-bg);
+  background: var(--blue);
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: .5rem;
+  padding: 1rem 2.5rem;
+  margin-top: 2rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
 }
