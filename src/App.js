@@ -74,7 +74,7 @@ export default function App(){
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
         <div className="features">
           <div>Sound: <span onClick={toggleAudio}>{playAudio ? <i className="fa-solid fa-volume-high"></i> : <i className="fa-solid fa-volume-xmark"></i>}</span></div>
-          <span onClick={toggleHelpMenu}><i class="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls. Try to do it fast with lowest amount of rolls.</p></div>}
+          <span onClick={toggleHelpMenu}><i class="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls.</p></div>}
           <div>Theme: <span onClick={toggleTheme}>{darkTheme ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}</span></div>
         </div>
       </div>
