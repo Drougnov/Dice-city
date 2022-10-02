@@ -4,9 +4,20 @@ import { nanoid } from "nanoid";
 
 export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
+  const [victory, setVictory] = React.useState(false);
   const [darkTheme, setDarkTheme] = React.useState(false);
   const [playAudio, setPlayAudio] = React.useState(true);
   const [showInfo, setShowInfo] = React.useState(false);
+
+  React.useEffect(()=>{
+    const allDiceHeld = dice.every(die=> !die.isHeld)
+    const firstDiceValue = dice[0].value;
+    const allDiceMatched = dice.every(die => die.value===firstDiceValue);
+
+    if(allDiceHeld && allDiceMatched){
+      setVictory(true);
+    }
+  },[dice])
 
   function dieValueObject(){
     return {
@@ -25,7 +36,14 @@ export default function App(){
   }
 
   function rollDice(){
-    setDice(generateNewDice())
+    if(!victory){
+      setDice(prevDice => prevDice.map(die =>{
+        return die.isHeld ? die : dieValueObject();
+      }))
+    }else{
+      setDice(generateNewDice());
+      setVictory(false);
+    }
   }
 
   function holdDice(id){
