@@ -53,7 +53,7 @@ export default function App(){
         </div>
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
         <div className="features">
-          <span>Sound: <i className="fa-solid fa-volume-xmark"></i><i className="fa-solid fa-volume-high"></i></span>
+          <div>Sound: <span><i className="fa-solid fa-volume-xmark"></i><i className="fa-solid fa-volume-high"></i></span></div>
           <div>Theme: <span onClick={toggleTheme}>{darkTheme ? <i className="fa-solid fa-sun"></i> : <i className="fa-solid fa-moon"></i>}</span></div>
         </div>
       </div>
