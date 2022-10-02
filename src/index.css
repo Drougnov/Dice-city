@@ -3,3 +3,65 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root{
+  --black: #000000ff;
+  --baby-powder: #fffffcff;
+  --khaki-web: #beb7a4ff;
+  --amber-sae-ece: #ff7f11ff;
+  --red-ryb: #ff1b1cff;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+}
+.board{
+  background: var(--khaki-web);
+  padding: 1rem 1.5rem;
+  border-radius: .3rem;
+  -webkit-border-radius: .3rem;
+  -moz-border-radius: .3rem;
+  -ms-border-radius: .3rem;
+  -o-border-radius: .3rem;
+  box-shadow: 0 2rem 2rem 0 rgba(0, 0, 0, 0.1);
+}
+.board .counter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.counter > *{
+  display: flex;
+  align-content: center;
+  gap: .5rem;
+}
+.board .die-container{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(3,1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+}
+.die i{
+  font-size: 2.5rem;
+}
+.board .roll-btn{
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.board .features{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
