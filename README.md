@@ -2,11 +2,12 @@
 
 Dice city is a rolling and matching game called **Tenzies** made with React JS.
 
+![Dice City's screenshot](./images/design.jpg)
+
 ## Table of contents
 
 - [Overview](#overview)
   - [Instructions](#instructions)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -23,10 +24,6 @@ Dice city is a rolling and matching game called **Tenzies** made with React JS.
 - Click each die to freeze it at its current value between rolls.
 - You can undo holding die by clicking/pressing it again.
 - Try to match the dice quickly with lowest amount of roll.
-
-### Screenshot
-
-![Dice City's screenshot](./Images/design.jpg)
 
 ### Links
 
@@ -48,6 +45,8 @@ Dice city is a rolling and matching game called **Tenzies** made with React JS.
 ### Continued development
 
 - Update/improve the UI.
+
+- Change Initial theme based on user preference
 
 ### Useful resources
 
