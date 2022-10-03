@@ -27,7 +27,7 @@ Dice city is a rolling and matching game called **Tenzies** made with React JS.
 
 ### Links
 
-- Live Site URL: [https://drougnov.github.io/Dice-City/](https://drougnov.github.io/Dice-City/)
+- Live Site URL: [https://Drougnov.github.io/Dice-city](https://Drougnov.github.io/Dice-city)
 
 ## My process
 
