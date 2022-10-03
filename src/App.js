@@ -1,7 +1,12 @@
 import React from "react";
 import Die from "./Components/Die";
 import { nanoid } from "nanoid";
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
+import useSound from "use-sound";
+import rollDiceSound from "./Audios/dice.mp3";
+import selectDiceSound from "./Audios/select.mp3";
+import winGameSound from "./Audios/win.mp3";
+import clickSound from "./Audios/click.mp3";
 
 export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
@@ -14,6 +19,7 @@ export default function App(){
   const [timerActive, setTimerActive] = React.useState(false);
   const [currentScore, setCurrentScore] = React.useState(0);
   const [highScore, setHighScore] = React.useState(11200);
+  const [playWinGameSound] = useSound(winGameSound);
 
   React.useEffect(()=>{
     const someDiceHeld = dice.some(die=> die.isHeld);
@@ -28,7 +34,6 @@ export default function App(){
     if(someDiceHeld && !allDiceHeld){
       setTimerActive(true);
     }
-    console.log(currentScore,highScore)
 
     if(allDiceHeld && allDiceMatched){
       setVictory(true);
@@ -38,6 +43,7 @@ export default function App(){
         setHighScore(currentScore);
         localStorage.setItem('highScore', JSON.stringify(currentScore));
       }
+      playAudio && playWinGameSound();
     }
 
     let interval;
