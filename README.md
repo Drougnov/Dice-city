@@ -38,9 +38,9 @@ Dice city is a rolling and matching game called **Tenzies** made with React JS.
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) - JS library
-    --React Confetti
-    --React use-sound
-    --React nano-id
+- React Confetti
+- React use-sound
+- React nano-id
 
 ### Continued development
 
