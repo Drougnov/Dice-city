@@ -66,7 +66,6 @@
 .board .die-container{
   display: grid;
   grid-template-columns: repeat(5,1fr);
-  grid-template-rows: repeat(3,1fr);
   gap: 1rem;
   margin: 3rem 0;
 }
@@ -208,4 +207,5 @@
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
+  cursor: pointer;
 }

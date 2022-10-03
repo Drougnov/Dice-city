@@ -8,16 +8,35 @@ export default function App(){
   const [darkTheme, setDarkTheme] = React.useState(false);
   const [playAudio, setPlayAudio] = React.useState(true);
   const [showInfo, setShowInfo] = React.useState(false);
+  const [rollCount, setRollCount] = React.useState(0);
+  const [timer, setTimer] = React.useState(0);
+  const [timerActive, setTimerActive] = React.useState(false);
 
   React.useEffect(()=>{
-    const allDiceHeld = dice.every(die=> die.isHeld)
+    const someDiceHeld = dice.some(die=> die.isHeld);
+    const allDiceHeld = dice.every(die=> die.isHeld);
     const firstDiceValue = dice[0].value;
     const allDiceMatched = dice.every(die => die.value===firstDiceValue);
+    
+    if(someDiceHeld && !allDiceHeld){
+      setTimerActive(true);
+    }
 
     if(allDiceHeld && allDiceMatched){
       setVictory(true);
+      setTimerActive(false);
     }
-  },[dice])
+
+    let interval;
+    if(timerActive){
+      interval = setInterval(() => {
+        setTimer((prevTime) => prevTime + 10);
+      }, 10);
+    }else if(!timerActive){
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  },[dice,timerActive])
 
   function dieValueObject(){
     return {
@@ -40,6 +59,7 @@ export default function App(){
       setDice(prevDice => prevDice.map(die =>{
         return die.isHeld ? die : dieValueObject();
       }))
+      setRollCount(count=> count + 1);
     }
   }
 
@@ -54,17 +74,33 @@ export default function App(){
 
   function startNewGame(){
     setVictory(false);
-    setDice(generateNewDice())
+    setDice(generateNewDice());
+    setRollCount(0);
+    setTimer(0)
   }
 
   function toggleTheme(){
     setDarkTheme(prevState => !prevState)
   }
+
   function toggleAudio(){
     setPlayAudio(prevState => !prevState)
   }
+
   function toggleHelpMenu(){
     setShowInfo(prevState => !prevState)
+  }
+
+  function formattedRollCount(count){
+    return ('0'+count).slice(-2);
+  }
+
+  function formattedTime(time){
+    const formattedMinute = ("0" + Math.floor((timer / 60000) % 60)).slice(-2)
+    const formattedSecond = ("0" + Math.floor((time / 1000) % 60)).slice(-2)
+    const formattedMilliSecond = ("0" + ((time / 10) % 100)).slice(-2)
+
+    return `${formattedMinute} : ${formattedSecond} : ${formattedMilliSecond}`
   }
 
   const dieElements = dice.map(die =>{
@@ -81,11 +117,11 @@ export default function App(){
         <div className="counter">
           <div className="counter__time">
             <i className="fa-solid fa-stopwatch"></i>
-            <span>00:00:00</span>
+            <span>{formattedTime(timer)}</span>
           </div>
           <div className="counter__roll">
             <i className="fa-solid fa-dice"></i>
-            <span>00</span>
+            <span>{formattedRollCount(rollCount)}</span>
           </div>
         </div>
         <div className="die-container">
