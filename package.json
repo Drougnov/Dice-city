@@ -1,6 +1,6 @@
 {
   "homepage": "https://Drougnov.github.io/Dice-city",
-  "name": "meme-generator",
+  "name": "dice-city",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
