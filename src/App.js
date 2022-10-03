@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import Confetti from 'react-confetti';
 import useSound from "use-sound";
 import rollDiceSound from "./Audios/dice.mp3";
-import selectDiceSound from "./Audios/select.mp3";
+import holdDiceSound from "./Audios/select.mp3";
 import winGameSound from "./Audios/win.mp3";
 import clickSound from "./Audios/click.mp3";
 
@@ -20,6 +20,10 @@ export default function App(){
   const [currentScore, setCurrentScore] = React.useState(0);
   const [highScore, setHighScore] = React.useState(11200);
   const [playWinGameSound] = useSound(winGameSound);
+  const [playRollDiceSound] = useSound(rollDiceSound);
+  const [playHoldDiceSound] = useSound(holdDiceSound);
+  const [playClickSound] = useSound(clickSound);
+
 
   React.useEffect(()=>{
     const someDiceHeld = dice.some(die=> die.isHeld);
@@ -74,6 +78,7 @@ export default function App(){
   }
 
   function rollDice(){
+    playAudio && playRollDiceSound();
     if(!victory){
       setDice(prevDice => prevDice.map(die =>{
         return die.isHeld ? die : dieValueObject();
@@ -84,6 +89,7 @@ export default function App(){
   }
 
   function holdDice(id){
+    playAudio && playHoldDiceSound();
     setDice(prevDice => prevDice.map(die=>{
       return die.id===id? {
         ...die,
@@ -101,15 +107,18 @@ export default function App(){
   }
 
   function toggleTheme(){
-    setDarkTheme(prevState => !prevState)
+    setDarkTheme(prevState => !prevState);
+    playAudio && playClickSound();
   }
 
   function toggleAudio(){
     setPlayAudio(prevState => !prevState)
+    playAudio && playClickSound();
   }
 
   function toggleHelpMenu(){
     setShowInfo(prevState => !prevState)
+    playAudio && playClickSound();
   }
 
   function formattedRollCount(count){
