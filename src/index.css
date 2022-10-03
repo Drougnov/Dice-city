@@ -35,11 +35,11 @@
 .board{
   color: var(--die-clr);
   padding: 1rem 1.5rem;
-  border-radius: .3rem;
   -webkit-border-radius: .3rem;
   -moz-border-radius: .3rem;
   -ms-border-radius: .3rem;
   -o-border-radius: .3rem;
+  border-radius: .3rem;
   border: 5px solid var(--blue);
   box-shadow: -6px -6px 16px white, 
               6px 6px 16px hsla(240, 30%, 86%, 1), 
@@ -87,29 +87,29 @@
   background: var(--blue);
   font-size: 1.5rem;
   border: none;
-  border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+  border-radius: 50%;
   display: block;
   margin: 0 auto;
   cursor: pointer;
-  transition: all .3s linear;
   -webkit-transition: all .3s linear;
   -moz-transition: all .3s linear;
   -ms-transition: all .3s linear;
   -o-transition: all .3s linear;
+  transition: all .3s linear;
 }
 .roll-btn .fa-solid{
   color: var(--container-bg);
 }
 .board .roll-btn:active{
-  transform: translateY(5px);
   -webkit-transform: translateY(5px);
   -moz-transform: translateY(5px);
   -ms-transform: translateY(5px);
   -o-transform: translateY(5px);
+  transform: translateY(5px);
 }
 .board .features{
   display: flex;
@@ -136,11 +136,11 @@
   font-weight: 400;
   text-align: center;
   padding: 1rem 1.5rem;
-  border-radius: .5rem;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
+  border-radius: .5rem;
   box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
@@ -155,11 +155,11 @@
   width: 20px;
   height: 20px;
   background: var(--dark-container-bg);
-  transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
+  transform: rotate(45deg);
   z-index: 1;
 }
 .board.dark-mode .help-menu{
@@ -201,13 +201,13 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   border: none;
-  border-radius: .5rem;
   padding: 1rem 2.5rem;
   margin-top: 2rem;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
+  border-radius: .5rem;
   cursor: pointer;
 }
 .container .confetti{
