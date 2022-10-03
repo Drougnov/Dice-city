@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/Dice-city/static/css/main.ddb8065a.css",
-    "main.js": "/Dice-city/static/js/main.f2138bef.js",
-    "static/js/845.0e55a857.chunk.js": "/Dice-city/static/js/845.0e55a857.chunk.js",
+    "main.js": "/Dice-city/static/js/main.8ada5b0d.js",
+    "static/js/845.aac3816a.chunk.js": "/Dice-city/static/js/845.aac3816a.chunk.js",
     "static/media/win.mp3": "/Dice-city/static/media/win.fd2c2fea27379cbc44da.mp3",
     "static/media/dice.mp3": "/Dice-city/static/media/dice.27e81313143ab3a6fa24.mp3",
     "static/media/select.mp3": "/Dice-city/static/media/select.1f55c00d707e4435c733.mp3",
     "static/media/click.mp3": "/Dice-city/static/media/click.7f139b396a1194e8727a.mp3",
     "index.html": "/Dice-city/index.html",
     "main.ddb8065a.css.map": "/Dice-city/static/css/main.ddb8065a.css.map",
-    "main.f2138bef.js.map": "/Dice-city/static/js/main.f2138bef.js.map",
-    "845.0e55a857.chunk.js.map": "/Dice-city/static/js/845.0e55a857.chunk.js.map"
+    "main.8ada5b0d.js.map": "/Dice-city/static/js/main.8ada5b0d.js.map",
+    "845.aac3816a.chunk.js.map": "/Dice-city/static/js/845.aac3816a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ddb8065a.css",
-    "static/js/main.f2138bef.js"
+    "static/js/main.8ada5b0d.js"
   ]
 }
