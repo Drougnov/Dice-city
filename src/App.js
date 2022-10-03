@@ -11,20 +11,32 @@ export default function App(){
   const [rollCount, setRollCount] = React.useState(0);
   const [timer, setTimer] = React.useState(0);
   const [timerActive, setTimerActive] = React.useState(false);
+  const [currentScore, setCurrentScore] = React.useState(0);
+  const [highScore, setHighScore] = React.useState(3219);
 
   React.useEffect(()=>{
     const someDiceHeld = dice.some(die=> die.isHeld);
     const allDiceHeld = dice.every(die=> die.isHeld);
     const firstDiceValue = dice[0].value;
     const allDiceMatched = dice.every(die => die.value===firstDiceValue);
+    const highScore = JSON.parse(localStorage.getItem("highScore"));
+    if (highScore) {
+        setHighScore(highScore);
+    }
     
     if(someDiceHeld && !allDiceHeld){
       setTimerActive(true);
     }
+    console.log(currentScore,highScore)
 
     if(allDiceHeld && allDiceMatched){
       setVictory(true);
       setTimerActive(false);
+      setCurrentScore(Math.round(((1/rollCount)+(1/timer))*100000));
+      if(currentScore > highScore){
+        setHighScore(currentScore);
+        localStorage.setItem('highScore', JSON.stringify(currentScore));
+      }
     }
 
     let interval;
@@ -36,7 +48,7 @@ export default function App(){
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  },[dice,timerActive])
+  },[dice,timerActive,currentScore,highScore])
 
   function dieValueObject(){
     return {
@@ -76,7 +88,8 @@ export default function App(){
     setVictory(false);
     setDice(generateNewDice());
     setRollCount(0);
-    setTimer(0)
+    setTimer(0);
+    setCurrentScore(0);
   }
 
   function toggleTheme(){
@@ -101,10 +114,6 @@ export default function App(){
     const formattedMilliSecond = ("0" + ((time / 10) % 100)).slice(-2)
 
     return `${formattedMinute} : ${formattedSecond} : ${formattedMilliSecond}`
-  }
-
-  function calculateScore(count,time){
-    return Math.round(((1/count)+(1/time))*100000);
   }
 
   const dieElements = dice.map(die =>{
@@ -140,8 +149,8 @@ export default function App(){
         {victory && 
           <div className="score-board">
             <h2>Congratulations!</h2>
-            <p>You scored: <span>{calculateScore(rollCount,timer)}</span></p>
-            <p>High Score: <span>0000</span></p>
+            <p>You scored: <span>{currentScore}</span></p>
+            <p>High Score: <span>{highScore}</span></p>
             <button onClick={startNewGame}>New Game</button>
           </div>
         }
