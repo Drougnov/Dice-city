@@ -12,7 +12,7 @@ export default function App(){
   const [timer, setTimer] = React.useState(0);
   const [timerActive, setTimerActive] = React.useState(false);
   const [currentScore, setCurrentScore] = React.useState(0);
-  const [highScore, setHighScore] = React.useState(3219);
+  const [highScore, setHighScore] = React.useState(11200);
 
   React.useEffect(()=>{
     const someDiceHeld = dice.some(die=> die.isHeld);
@@ -72,6 +72,7 @@ export default function App(){
         return die.isHeld ? die : dieValueObject();
       }))
       setRollCount(count=> count + 1);
+      setTimerActive(true)
     }
   }
 
