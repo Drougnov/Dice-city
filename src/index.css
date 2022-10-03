@@ -26,6 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .container.dark-mode{
   color: var(--dark-die-clr);
@@ -208,4 +209,13 @@
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
   cursor: pointer;
+}
+.container .confetti{
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
