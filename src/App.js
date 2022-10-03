@@ -103,6 +103,10 @@ export default function App(){
     return `${formattedMinute} : ${formattedSecond} : ${formattedMilliSecond}`
   }
 
+  function calculateScore(count,time){
+    return Math.round(((1/count)+(1/time))*100000);
+  }
+
   const dieElements = dice.map(die =>{
     return <Die key={die.id}
               value={die.value}
@@ -136,7 +140,7 @@ export default function App(){
         {victory && 
           <div className="score-board">
             <h2>Congratulations!</h2>
-            <p>You scored: <span>0000</span></p>
+            <p>You scored: <span>{calculateScore(rollCount,timer)}</span></p>
             <p>High Score: <span>0000</span></p>
             <button onClick={startNewGame}>New Game</button>
           </div>
