@@ -2,7 +2,7 @@
 
 Dice city is a rolling and matching game called **Tenzies** made with React JS.
 
-![Dice City's screenshot](./images/design.jpg)
+![Dice City's screenshot](./src/images/design.png)
 
 ## Table of contents
 
