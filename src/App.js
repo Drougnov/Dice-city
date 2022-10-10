@@ -59,7 +59,7 @@ export default function App(){
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  },[dice,rollCount,timer,timerActive,currentScore,highScore])
+  },[dice,rollCount,timer,timerActive,currentScore,highScore,playAudio,playWinGameSound])
 
   function dieValueObject(){
     return {
