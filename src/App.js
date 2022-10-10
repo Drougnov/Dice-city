@@ -103,6 +103,7 @@ export default function App(){
     setDice(generateNewDice());
     setRollCount(0);
     setTimer(0);
+    setTimerActive(false);
     setCurrentScore(0);
   }
 
@@ -158,6 +159,7 @@ export default function App(){
           {dieElements}
         </div>
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
+        <button onClick={startNewGame}><i className="fa-solid fa-power-off"></i></button>
         <div className="features">
           <div>Sound: <span onClick={toggleAudio}>{playAudio ? <i className="fa-solid fa-volume-high"></i> : <i className="fa-solid fa-volume-xmark"></i>}</span></div>
           <span onClick={toggleHelpMenu}><i className="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls.</p></div>}
