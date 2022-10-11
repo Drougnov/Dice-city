@@ -7,6 +7,7 @@ import rollDiceSound from "./Audios/dice.mp3";
 import holdDiceSound from "./Audios/select.mp3";
 import winGameSound from "./Audios/win.mp3";
 import clickSound from "./Audios/click.mp3";
+import usePrefersColorScheme from 'use-prefers-color-scheme';
 
 export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
