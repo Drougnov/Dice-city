@@ -24,9 +24,13 @@ export default function App(){
   const [playRollDiceSound] = useSound(rollDiceSound);
   const [playHoldDiceSound] = useSound(holdDiceSound);
   const [playClickSound] = useSound(clickSound);
-
-
+  const prefersColorScheme = usePrefersColorScheme();
+  
   React.useEffect(()=>{
+    if(prefersColorScheme === 'dark'){
+      setDarkTheme(true)
+    }
+
     const someDiceHeld = dice.some(die=> die.isHeld);
     const allDiceHeld = dice.every(die=> die.isHeld);
     const firstDiceValue = dice[0].value;
@@ -60,7 +64,7 @@ export default function App(){
       clearInterval(interval);
     }
     return () => clearInterval(interval);
-  },[dice,rollCount,timer,timerActive,currentScore,highScore,playAudio,playWinGameSound])
+  },[dice,rollCount,timer,timerActive,currentScore,highScore,playAudio,playWinGameSound,prefersColorScheme])
 
   function dieValueObject(){
     return {
