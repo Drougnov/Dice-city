@@ -186,6 +186,14 @@
   color: var(--dark-die-clr);
   background: var(--dark-container-bg);
 }
+.board .restart{
+  color: var(--blue);
+  background: var(--container-bg);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
 .score-board h2{
   font-size: 2rem;
   margin-bottom: 2rem;
