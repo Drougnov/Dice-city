@@ -13,7 +13,7 @@ export default function App(){
   const [dice, setDice] = React.useState(generateNewDice());
   const [victory, setVictory] = React.useState(false);
   const [darkTheme, setDarkTheme] = React.useState(false);
-  const [playAudio, setPlayAudio] = React.useState(true);
+  const [playAudio, setPlayAudio] = React.useState(false);
   const [showInfo, setShowInfo] = React.useState(false);
   const [rollCount, setRollCount] = React.useState(0);
   const [timer, setTimer] = React.useState(0);
@@ -164,7 +164,7 @@ export default function App(){
           {dieElements}
         </div>
         <button className="roll-btn" onClick={rollDice}><i className="fa-solid fa-dice"></i></button>
-        <button onClick={startNewGame}><i className="fa-solid fa-power-off"></i></button>
+        {timerActive && <button className="restart" onClick={startNewGame}><i className="fa-solid fa-power-off"></i></button>}
         <div className="features">
           <div>Sound: <span onClick={toggleAudio}>{playAudio ? <i className="fa-solid fa-volume-high"></i> : <i className="fa-solid fa-volume-xmark"></i>}</span></div>
           <span onClick={toggleHelpMenu}><i className="fa-solid fa-circle-info"></i></span>{showInfo && <div className="help-menu"><p>Roll untill the dice are the same. Click each die to freeze it at it's current value between rolls.</p></div>}
